@@ -12,6 +12,7 @@ export const MainModal = ({ closeModal, type, setType, setSmartLinks }) => {
     title: "",
     url: "",
   });
+  const [loading, setLoading] =useState(false);
   const validateForm = () => {
     let flag = true;
     if (userUrl.length === 0) {
@@ -25,10 +26,14 @@ export const MainModal = ({ closeModal, type, setType, setSmartLinks }) => {
     return flag;
   };
   const handleGenerateLink = async () => {
+    setLoading(true);
     if (!validateForm()) {
+      setLoading(false);
       return;
     }
+    
     const response = await createSmartLink(urlTitle, userUrl);
+    setLoading(false);
     if (response?.ok) {
       setSmartUrl(response.shortUrl);
       setType("ShowURL");
@@ -60,6 +65,7 @@ export const MainModal = ({ closeModal, type, setType, setSmartLinks }) => {
           setUrlTitle={setUrlTitle}
           warning={warning}
           setWarning={setWarning}
+          loading={loading}
         />
       )}
       {type === "ShowURL" && (

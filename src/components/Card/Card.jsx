@@ -7,6 +7,7 @@ import { toast } from "react-toastify";
 
 export const Card = ({ data }) => {
   const smartLink = `${process.env.NEXT_PUBLIC_BASE_URL}/${data?.shortId}`;
+  const slicedLink = smartLink.length > 35 ? smartLink.slice(0,35) + "..." : smartLink;
   const [copied, setCopied] = useState(false);
   const handleCopy = async () => {
     try {
@@ -32,7 +33,7 @@ export const Card = ({ data }) => {
             <IoLink className=" -rotate-45 text-xl " />
           </div>
           <div>
-            <h1 className="">{data.title}</h1>
+            <h1 className="">{data.title.charAt(0).toUpperCase() + data.title.slice(1)}</h1>
             <p className=" text-sm text-gray-400">
               {data.createdAt.split("T")[0]}
             </p>
@@ -45,7 +46,7 @@ export const Card = ({ data }) => {
       </div>
 
       <div className="bottom">
-        <div className=" line-clamp-1 ">{smartLink}</div>
+        <div className=" line-clamp-1 overflow-hidden ">{slicedLink}</div>
         <div className="copy shadow-md" onClick={handleCopy}>
           {copied ? (
             <IoCheckmarkDoneSharp className="text-xl" />

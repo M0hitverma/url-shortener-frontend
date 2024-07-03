@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { AuthSignIn } from "@/api/Authentication";
 import { toast } from "react-toastify";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 import Loader from "../../../public/assets/Loader.gif"
 import { IoIosArrowBack } from "react-icons/io";
 import Image from "next/image";
@@ -14,6 +15,7 @@ const Login = () => {
     email: "",
     password: "",
   });
+  const [showPassword, setShowPassword] = useState(false);
   const [warning, setWarning] = useState({
     email: "",
     password: "",
@@ -112,6 +114,7 @@ const Login = () => {
             <input
               id="email"
               name="email"
+              maxLength={254}
               placeholder="Enter your Email"
               value={info.email}
               onChange={handleOnChange}
@@ -131,6 +134,8 @@ const Login = () => {
             </label>
             <input
               id="password"
+              type={`${showPassword ? "text" : "password"}`}
+              maxLength={15}
               name="password"
               placeholder="Enter your Password"
               value={info.password}
@@ -138,6 +143,11 @@ const Login = () => {
               className="flex-1 text-sm border border-gray-300 focus:outline-none focus:border focus:border-gray-400 p-3 rounded-xl"
               onFocus={handleFocus}
             />
+            <div className="absolute right-4 top-[50%] cursor-pointer"
+            onClick={()=>setShowPassword(!showPassword)}
+            >
+              {!showPassword ? <FaEye /> : <FaEyeSlash />}
+            </div>
             {warning.password.length > 0 && (
               <p className="text-red-400 font-semibold bg-white  p-1 text-xs absolute -bottom-4">
                 *{warning.password}

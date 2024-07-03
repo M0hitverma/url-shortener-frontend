@@ -1,6 +1,8 @@
 import React, { useRef, useState } from "react";
 import { GoPaste } from "react-icons/go";
 import { IoClose } from "react-icons/io5";
+import Image from "next/image";
+import Loader from "../../../public/assets/Loader.gif"
 export const SmartLinkModal = ({
   closeModal,
   handleGenerateLink,
@@ -9,7 +11,8 @@ export const SmartLinkModal = ({
   urlTitle,
   setUrlTitle,
   warning,
-  setWarning
+  setWarning,
+  loading
 }) => {
   const modalRef = useRef();
 
@@ -79,9 +82,10 @@ export const SmartLinkModal = ({
             </div>
           </div>
           <button
-            className="bg-blue-500 py-4 rounded-md font-semibold  text-white"
+            className="bg-blue-500 py-4 rounded-md font-semibold  text-white relative"
             onClick={handleGenerateLink}
           >
+            {loading && <Image src={Loader} width={65} height={65} className="absolute left-3 top-0"/>}
             Generate Link
           </button>
         </div>

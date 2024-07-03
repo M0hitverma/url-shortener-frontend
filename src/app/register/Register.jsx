@@ -4,6 +4,7 @@ import Link from "next/link";
 import { AuthSignUp } from "@/api/Authentication";
 import { toast } from "react-toastify";
 import { useRouter } from "next/navigation";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 import Loader from "../../../public/assets/Loader.gif";
 import { IoIosArrowBack } from "react-icons/io";
 import Image from "next/image";
@@ -14,6 +15,7 @@ const Register = () => {
     email: "",
     password: "",
   });
+  const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
   const [warning, setWarning] = useState({
     name: "",
@@ -54,13 +56,13 @@ const Register = () => {
 
     return valid;
   };
-  const handleFocus=()=>{
-     setWarning({
+  const handleFocus = () => {
+    setWarning({
       name: "",
       email: "",
-      password: ""
-     })
-  }
+      password: "",
+    });
+  };
   const handleSignUp = async (e) => {
     e.preventDefault();
     setError("");
@@ -70,24 +72,24 @@ const Register = () => {
     setLoading(true);
     const response = await AuthSignUp(user);
     if (!response) {
-      toast.error("Something went wrong! Try again Later",{autoClose:2000});
+      toast.error("Something went wrong! Try again Later", { autoClose: 2000 });
       setLoading(false);
       return;
     }
     if (response?.ok) {
-      toast.success("Thanks for Registering!",{autoClose:2000});
+      toast.success("Thanks for Registering!", { autoClose: 2000 });
       setLoading(false);
       setUser({
         name: "",
-        email: "", 
-        password: ""
-      })
-  
-      setTimeout(()=>{
-        router.replace("/login");
-      },2000) 
+        email: "",
+        password: "",
+      });
 
-     return 
+      setTimeout(() => {
+        router.replace("/login");
+      }, 2000);
+
+      return;
     }
     setError(response.message);
     setLoading(false);
@@ -95,8 +97,11 @@ const Register = () => {
 
   return (
     <div className="w-full min-h-[90vh] flex items-center justify-center bg-gradient-to-r from-indigo-400 to-cyan-200  relative  ">
-      <Link href={'/'}>
-      <div className="absolute top-4 left-4 flex flex-row items-center text-white font-semibold  cursor-pointer hover:text-gray-200 "> <IoIosArrowBack size={30} /> Home</div>
+      <Link href={"/"}>
+        <div className="absolute top-4 left-4 flex flex-row items-center text-white font-semibold  cursor-pointer hover:text-gray-200 ">
+          {" "}
+          <IoIosArrowBack size={30} /> Home
+        </div>
       </Link>
       <div className=" md:w-[32rem] sm:w-[90%] w-[93%]  shadow-lg  flex flex-col   bg-white  sm:p-10 p-4 rounded-xl  ">
         <h1 className="text-center text-2xl font-semibold">Register</h1>
@@ -112,6 +117,7 @@ const Register = () => {
             </label>
             <input
               id="name"
+              maxLength={20}
               name="name"
               placeholder="Enter your Name"
               value={user.name}
@@ -133,6 +139,7 @@ const Register = () => {
             <input
               id="email"
               name="email"
+              maxLength={254}
               placeholder="Enter your Email"
               value={user.email}
               onChange={handleOnChange}
@@ -152,12 +159,19 @@ const Register = () => {
             <input
               id="password"
               name="password"
+              type={`${showPassword ? "text" : "password"}`}
+              maxLength={15}
               placeholder="Enter Password"
               value={user.password}
               onChange={handleOnChange}
               className="flex-1 text-sm border border-gray-300 focus:outline-none focus:border focus:border-gray-400 p-3 rounded-xl"
               onFocus={handleFocus}
             />
+            <div className="absolute right-4 top-[50%] cursor-pointer"
+            onClick={()=>setShowPassword(!showPassword)}
+            >
+              {!showPassword ? <FaEye /> : <FaEyeSlash />}
+            </div>
             {warning.password.length > 0 && (
               <p className="text-red-400 bg-white p-1 rounded-md  font-semibold  text-xs  absolute -bottom-4">
                 *{warning.password}
