@@ -46,7 +46,7 @@ export const Card = ({ data }) => {
       </div>
 
       <div className="bottom">
-        <div className=" line-clamp-1 overflow-hidden ">{slicedLink}</div>
+        <div className=" overflow-hidden whitespace-nowrap w-full truncate ">{smartLink}</div>
         <div className="copy shadow-md" onClick={handleCopy}>
           {copied ? (
             <IoCheckmarkDoneSharp className="text-xl" />

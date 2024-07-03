@@ -65,16 +65,16 @@ export const Main = () => {
         </div>
       </div>
 
-      <div className="links-container py-10 md:px-10 px-5 md:w-[80vw] ">
-        {!authorized ? (
+      <div className="links-container py-10 md:px-10 px-2 md:w-[80vw] w-[93vw]">
+        {!authorized  ? (
           <div className="flex flex-col ">
             <h1 className="md:text-2xl text-xl font-semibold mb-5">
               Welcome to Smart Link Service
             </h1>
-            <h3 className="text-lg font-semibold ">
+            <h3 className="md:text-lg text-base font-semibold ">
               To access the Smart Link Service, please log in to your account.
             </h3>
-            <ul className="list-disc  mb-5 ">
+            <ul className="list-disc md:text-base text-sm font-medium  mb-5 ">
               <li>
                 Already have an account?{" "}
                 <Link href={`/login`} className="text-blue-500 font-normal">
@@ -90,8 +90,8 @@ export const Main = () => {
                 to create an account and get started.
               </li>
             </ul>
-            <h3 className="text-lg font-semibold ">Why Log In?</h3>
-            <ul className="list-disc ">
+            <h3 className="md:text-lg text-base font-semibold ">Why Log In?</h3>
+            <ul className="list-disc md:text-base text-sm font-medium ">
               <li>
                 Personalized Experience: Access links tailored just for you.
               </li>
@@ -109,7 +109,7 @@ export const Main = () => {
                 and user engagement.
               </li>
             </ul>
-            <p className="mt-5 md:text-xl text-lg">
+            <p className="mt-5 md:text-xl text-lg font-medium">
               <Link href={`/login`} className="text-blue-500">
                 Log In
               </Link>{" "}
@@ -128,7 +128,7 @@ export const Main = () => {
             <p className="font-semibold  mb-2 opacity-60">
               Create personalized smart links and unlock their potential:
             </p>
-            <ul className="list-disc ">
+            <ul className="list-disc md:text-base text-sm font-medium">
               <li>
                 Easy Setup: Start creating your first smart link in just a few
                 simple steps.
@@ -155,7 +155,7 @@ export const Main = () => {
               </li>
             </ul>
 
-            <div className="mt-5  ">
+            <div className="mt-5  font-medium ">
               Ready to get started?{" "}
               <button className="text-blue-500 font-semibold">
                 Create your first smart link now
@@ -165,8 +165,8 @@ export const Main = () => {
           </div>
         ) : (
           <>
-            <h1 className="w-full  text-xl  font-mono">Smart Links</h1>
-            <div className="grid md:grid-flow-row md:grid-cols-2 grid-cols-1  items-center justify-center md:gap-14 gap-5">
+            <h1 className="w-full  text-xl    font-medium">Smart Links</h1>
+            <div className="grid md:grid-flow-row lg:grid-cols-2  grid-cols-1  items-center justify-center md:gap-14 gap-5">
               {smartLinks.map((item, index) => (
                 <div key={index}>
                   <Card data={item} />
