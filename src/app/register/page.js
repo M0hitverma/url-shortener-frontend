@@ -1,10 +1,9 @@
-import Image from "next/image";
-import { Main } from "@/components/Main/Main";
+import Register from "./Register";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-export default function Home() {
+export default function page() {
   return (
-    <main>
+    <div>
       <ToastContainer
         position="top-right"
         hideProgressBar={false}
@@ -15,8 +14,8 @@ export default function Home() {
         theme="light"
         transition="Bounce"
       />
-      <Main />
+      <Register />
       <ToastContainer />
-    </main>
+    </div>
   );
 }

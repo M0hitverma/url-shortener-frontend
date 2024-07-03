@@ -1,0 +1,48 @@
+.main-container{
+    min-height: 100vh;
+   display: flex;
+   align-items: center;
+   flex-direction: column;
+   gap:2rem;
+
+   
+}
+.create-link{
+    width: 80vw;
+    height: fit-content;
+    padding: 30px;
+    border-radius: 20px;
+
+    display: flex;
+    flex-direction: column;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+    gap:2rem;
+}
+.button{
+    font-size: 1rem;
+    font-weight: 600;
+   padding:15px 25px;
+   border-radius: 20px;
+   color: white;
+    background-color: rgb(75, 148, 227);
+}
+.create-link>input{
+   padding:10px;
+    border:2px solid gray;
+    border-radius: 10px;
+    outline: none;
+    color:gray;
+
+}
+
+.links-container{
+    min-height: 60vh;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+    border-radius: 20px;
+    
+   background-color: rgba(175, 175, 175, 0.143);
+   display: flex;
+   flex-direction: column;
+   gap:2rem;
+   
+}

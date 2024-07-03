@@ -1,0 +1,19 @@
+.profile{
+background-color: orange;
+}
+.showProfile{
+    width: 7rem;
+    
+    border-radius: 6px 6px 0px 6px;
+    padding: 5px 10px;
+    position: absolute;
+    z-index: 1;
+   top:0;
+    transform: translateX(-110%);
+  display: none;
+font-size: 0.7rem;
+}
+
+.profile:hover .showProfile{
+   display: block;
+}

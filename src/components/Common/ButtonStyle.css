@@ -1,0 +1,12 @@
+.arrow{
+    
+    position: absolute;
+    top:50%;
+    transform: translateY(-50%);
+    font-size: 1.4rem;
+    left: -20%;
+    transition: all ease-in 0.5s;
+}
+.btnStyle:hover .arrow{
+    left:80%;
+}
