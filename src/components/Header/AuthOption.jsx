@@ -30,6 +30,7 @@ const AuthOption = () => {
     eventEmitter.emit("logout");
     setAuthorized(false);
     setUser({});
+    localStorage.removeItem("token");
   };
   const firstFetch = async () => {
     setLoading(true);
