@@ -5,7 +5,9 @@ export const createSmartLink = async (title,url) => {
   try {
     return await fetch(smart_link_url, {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
+      headers: { "Content-Type": "application/json",
+        "Authorization" : `Bearer ${localStorage.getItem("token")}`
+       },
       body: JSON.stringify({ url: url , title: title}),
       credentials: "include",
     })
@@ -24,6 +26,10 @@ export const getSmartLinks = async () => {
   try {
     return await fetch(get_smart_link_url, {
       method: "GET",
+      headers:{
+        "Content-Type" : "application/json",
+        "Authorization" : `Bearer ${localStorage.getItem("token")}`
+      },
       credentials: "include",
     })
       .then((resp) => {

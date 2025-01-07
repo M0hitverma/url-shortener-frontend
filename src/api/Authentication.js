@@ -32,6 +32,10 @@ export const AuthSignIn = async (info) => {
       cache: "no-store",
     })
       .then((resp) => {
+       const token = resp.headers.get("Authorization")?.split(" ")[1];
+        if (token) {
+          localStorage.setItem("token", token);
+        }
         return resp.json();
       })
       .catch((error) => {
@@ -46,7 +50,10 @@ export const CheckAuth = async () => {
   try {
     return await fetch(checkAuthUrl, {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${localStorage.getItem("token")}`,
+      },
       credentials: "include",
     })
       .then((resp) => {
@@ -64,7 +71,10 @@ export const logoutRequest = async () => {
   try {
     return await fetch(logoutUrl, {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${localStorage.getItem("token")}`,
+      },
       credentials: "include",
       cache: "no-cache",
     })
