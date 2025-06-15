@@ -25,15 +25,13 @@
 }
 
 .top-left>:nth-child(1) {
-    background-color: rgba(167, 156, 252, 0.64);
     height: 3rem;
     width: 3rem;
-    color: rgba(112, 124, 183, 0.928);
     border-radius: 5px;
-    box-shadow: rgba(167, 156, 252, 0.64) 0px 3px 6px;
     display: flex;
     align-items: center;
     justify-content: center;
+    box-shadow: inset 1px 2px 7px rgba(87, 120, 239, 0.64);
 }
 
 .bottom {
@@ -51,7 +49,8 @@
     color: rgb(35, 108, 234);
     font-weight: 400;
     border-radius: 10px;
-    border: 2px dotted rgba(160, 188, 237, 0.676);
+    /* border: 2px dotted rgba(160, 188, 237, 0.676); */
+    box-shadow: inset 1px 1px 4px rgba(121, 147, 241, 0.64);
 }
 
 .copy {

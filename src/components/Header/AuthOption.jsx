@@ -78,13 +78,19 @@ const AuthOption = () => {
               </div>
             ) : (
               <div className="flex flex-row gap-3 items-center">
-                <div className="profile w-11 h-11 rounded-full border-2 border-black relative">
-                  <Image
+                <div className="profile w-11 h-11 rounded-full  relative border-blue-50">
+                  {/* <Image
                     src={dp}
                     className="h-[100%] w-[100%] rounded-full"
                     alt=""
-                  />
-                  <div className="showProfile bg-blue-100 border-2 border-blue-400 shadow-lg">
+                  /> */}
+                  <div className="w-[100%] h-[100%] flex items-center justify-center">
+                    <h3 className="text-2xl text-blue-400 font-semibold">
+                      {user?.name[0]}
+                    </h3>
+                  </div>
+
+                  <div className="showProfile bg-blue-100 border-2 border-blue-400 shadow-lg ">
                     <h2 className="text-black font-semibold">
                       Hi! {user.name}
                     </h2>
@@ -103,8 +109,8 @@ const AuthOption = () => {
             <button onClick={() => setShowMenu(!showMenu)}>
               <IoMdMenu className="text-3xl" />
             </button>
-            {showMenu && (
-              <div className="fixed bg-blue-100 rounded-tl-xl rounded-bl-xl right-0   z-50 ">
+           
+              <div className={`fixed bg-blue-100 rounded-tl-xl rounded-bl-xl  duration-300 ease-in-out transition-all   z-50 ${showMenu?"right-0":"-right-[100%]" }`}>
                 {!authorized ? (
                   <div className=" grid grid-flow-row p-3 gap-3   font-semibold">
                     <button
@@ -131,15 +137,21 @@ const AuthOption = () => {
                 ) : (
                   <div className=" grid grid-flow-row px-1 py-2   font-semibold">
                     <div className="py-2 px-5 text-start flex flex-row items-center gap-1">
-                      <div className="w-11 h-11 rounded-full  mr-1">
-                        <Image
+                      <div className="profile w-8 h-8 rounded-full  mr-1  relative border-blue-50">
+                        {/* <Image
                           src={dp}
                           className="h-[100%] w-[100%] rounded-full"
                           alt=""
-                        />
+                        /> */}
+                        <div className="w-[100%] h-[100%] flex items-center justify-center ">
+                          <h3 className="text-xl text-blue-400 font-normal">
+                            {user?.name[0]}
+                          </h3>
+                        </div>
                       </div>{" "}
                       <span>{user.name}</span>
                     </div>
+                    <div className="border-[0.5px] border-white w-[90%] mx-auto"></div>
                     <button
                       className="py-2 px-5 text-start flex flex-row items-center gap-1 text-blue-400 "
                       onClick={() => {
@@ -153,7 +165,7 @@ const AuthOption = () => {
                   </div>
                 )}
               </div>
-            )}
+         
           </div>
         </>
       )}

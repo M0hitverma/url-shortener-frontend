@@ -4,8 +4,9 @@ import { IoLink } from "react-icons/io5";
 import { MdOutlineCopyAll } from "react-icons/md";
 import { IoCheckmarkDoneSharp } from "react-icons/io5";
 import { toast } from "react-toastify";
-
-export const Card = ({ data }) => {
+import lineGraphIcon from "@/../public/assets/line-graph-icon3.png"
+import Image from "next/image";
+export const Card = ({ data, openModal}) => {
   const smartLink = `${process.env.NEXT_PUBLIC_BASE_URL}/${data?.shortId}`;
   const slicedLink = smartLink.length > 35 ? smartLink.slice(0,35) + "..." : smartLink;
   const [copied, setCopied] = useState(false);
@@ -25,12 +26,15 @@ export const Card = ({ data }) => {
       toast.error("Something went wrong! Try again later");
     }
   };
+  const handleShowAnalytics = () =>{
+    openModal();
+  }
   return (
     <div className="card-container ">
       <div className="top">
         <div className="top-left">
-          <div>
-            <IoLink className=" -rotate-45 text-xl " />
+          <div className="cursor-pointer " onClick={handleShowAnalytics}>
+           <Image src={lineGraphIcon} alt="Analytics" height={34} width={34}/>
           </div>
           <div>
             <h1 className="">{data.title.charAt(0).toUpperCase() + data.title.slice(1)}</h1>

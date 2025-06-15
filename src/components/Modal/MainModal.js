@@ -2,9 +2,16 @@ import React, { useState } from "react";
 import { ShowUrlModal } from "./ShowUrlModal";
 import { SmartLinkModal } from "./SmartLinkModal";
 import { createSmartLink } from "@/api/CommanApi";
+import { ShowAnalyticsModal } from "./ShowAnalyticsModal";
 import { toast } from "react-toastify";
 import { LoginModal } from "./LoginModal";
-export const MainModal = ({ closeModal, type, setType, setSmartLinks }) => {
+export const MainModal = ({
+  closeModal,
+  type,
+  setType,
+  setSmartLinks,
+  linkAnalytics,
+}) => {
   const [userUrl, setUserUrl] = useState("");
   const [urlTitle, setUrlTitle] = useState("");
   const [smartUrl, setSmartUrl] = useState("SmartUrl");
@@ -12,7 +19,7 @@ export const MainModal = ({ closeModal, type, setType, setSmartLinks }) => {
     title: "",
     url: "",
   });
-  const [loading, setLoading] =useState(false);
+  const [loading, setLoading] = useState(false);
   const validateForm = () => {
     let flag = true;
     if (userUrl.length === 0) {
@@ -31,7 +38,7 @@ export const MainModal = ({ closeModal, type, setType, setSmartLinks }) => {
       setLoading(false);
       return;
     }
-    
+
     const response = await createSmartLink(urlTitle, userUrl);
     setLoading(false);
     if (response?.ok) {
@@ -77,6 +84,9 @@ export const MainModal = ({ closeModal, type, setType, setSmartLinks }) => {
         />
       )}
       {type === "LoginModal" && <LoginModal closeModal={closeModal} />}
+      {type === "ShowAnalytics" && (
+        <ShowAnalyticsModal closeModal={closeModal} linkAnalytics={linkAnalytics} />
+      )}
     </>
   );
 };

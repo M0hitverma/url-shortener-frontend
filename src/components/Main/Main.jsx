@@ -13,7 +13,7 @@ export const Main = () => {
   const [authorized, setAuthorized] = useState(false);
   const [smartLinks, setSmartLinks] = useState([]);
   const [type, setType] = useState();
-
+  const [linkAnalytics, setLinkAnalytics] = useState([]);
   const handleCreateSmartLink = () => {
     if (!authorized) {
       setType("LoginModal");
@@ -55,18 +55,18 @@ export const Main = () => {
             <Image src={NoClick} width={80} height={80} alt="No-Click" />
           </div>
           <button
-            className="button flex flex-row gap-1 items-center"
+            className="button flex flex-row gap-1 items-center group"
             type="button"
             onClick={handleCreateSmartLink}
           >
-            <span className="text-2xl  font-light">+</span>{" "}
+            <span className="text-2xl  font-light transform transition-transform duration-300 group-hover:rotate-90 group-hover:scale-125">+</span>{" "}
             <span>Create Smart Link</span>
           </button>
         </div>
       </div>
 
       <div className="links-container py-10 md:px-10 px-2 md:w-[80vw] w-[93vw]">
-        {!authorized  ? (
+        {!authorized ? (
           <div className="flex flex-col ">
             <h1 className="md:text-2xl text-xl font-semibold mb-5">
               Welcome to Smart Link Service
@@ -74,7 +74,7 @@ export const Main = () => {
             <h3 className="md:text-lg text-base font-semibold ">
               To access the Smart Link Service, please log in to your account.
             </h3>
-            <ul className="list-disc md:text-base text-sm font-medium  mb-5 ">
+            <ul className="list-disc md:text-base text-sm font-medium  mb-5 pl-3">
               <li>
                 Already have an account?{" "}
                 <Link href={`/login`} className="text-blue-500 font-normal">
@@ -91,7 +91,7 @@ export const Main = () => {
               </li>
             </ul>
             <h3 className="md:text-lg text-base font-semibold ">Why Log In?</h3>
-            <ul className="list-disc md:text-base text-sm font-medium ">
+            <ul className="list-disc md:text-base text-sm font-medium pl-3 ">
               <li>
                 Personalized Experience: Access links tailored just for you.
               </li>
@@ -169,7 +169,14 @@ export const Main = () => {
             <div className="grid md:grid-flow-row lg:grid-cols-2  grid-cols-1  items-center justify-center md:gap-14 gap-5">
               {smartLinks.map((item, index) => (
                 <div key={index}>
-                  <Card data={item} />
+                  <Card
+                    data={item}
+                    openModal={() => {
+                      setType("ShowAnalytics");
+                      setShowModal(true);
+                      setLinkAnalytics(item.visitedHistory);
+                    }}
+                  />
                 </div>
               ))}
             </div>
@@ -183,6 +190,7 @@ export const Main = () => {
           type={type}
           setType={setType}
           setSmartLinks={setSmartLinks}
+          linkAnalytics={linkAnalytics}
         />
       )}
     </div>

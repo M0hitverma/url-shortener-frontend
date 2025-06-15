@@ -1,5 +1,5 @@
 .profile{
-background-color: orange;
+ box-shadow: inset 1px 2px 6px rgb(107, 173, 231);
 }
 .showProfile{
     width: 7rem;
