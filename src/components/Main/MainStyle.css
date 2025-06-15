@@ -1,13 +1,14 @@
-.main-container{
+.main-container {
     min-height: 100vh;
-   display: flex;
-   align-items: center;
-   flex-direction: column;
-   gap:2rem;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 2rem;
 
-   
+
 }
-.create-link{
+
+.create-link {
     width: 80vw;
     height: fit-content;
     padding: 30px;
@@ -16,33 +17,34 @@
     display: flex;
     flex-direction: column;
     box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
-    gap:2rem;
+    gap: 2rem;
 }
-.button{
+
+.button {
     font-size: 1rem;
     font-weight: 600;
-   padding:15px 25px;
-   border-radius: 20px;
-   color: white;
+    padding: 15px 25px;
+    border-radius: 20px;
+    color: white;
     background-color: rgb(75, 148, 227);
 }
-.create-link>input{
-   padding:10px;
-    border:2px solid gray;
+
+.create-link>input {
+    padding: 10px;
+    border: 2px solid gray;
     border-radius: 10px;
     outline: none;
-    color:gray;
+    color: gray;
 
 }
 
-.links-container{
+.links-container {
     min-height: 60vh;
-    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+    box-shadow: inset 1px 1px 7px rgba(0, 0, 0, 0.1);
     border-radius: 20px;
-    
-   background-color: rgba(175, 175, 175, 0.143);
-   display: flex;
-   flex-direction: column;
-   gap:2rem;
-   
+    background-color: rgba(175, 175, 175, 0.143);
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+
 }
